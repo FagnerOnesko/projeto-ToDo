@@ -1,9 +1,11 @@
 const btAdd= document.querySelector('div.add-todo button')
-const btTodo= document.querySelector('h2.todo button')
-const btDoing= document.querySelector('h2.doing button')
-const btDone= document.querySelector('h2.done button')
+const btTodo= document.querySelector('#todo button')
+const btDoing= document.querySelector('#doing button')
+const btDone= document.querySelector('#done button')
 const inputTodo = document.querySelector('div.add-todo input')
-const listaTodo = document.querySelector('#todo');
+const cartaoTodo = document.querySelector('#todo');
+const cartaoDoing = document.querySelector('#doing');
+const cartaoDone = document.querySelector('#done');
 
 const criarItem = (atividade) => {
     const li = document.createElement('li')
@@ -15,7 +17,8 @@ const criarItem = (atividade) => {
     
     button.appendChild(i);
     li.append(texto,button);
-    listaTodo.appendChild(li)
+    cartaoTodo.appendChild(li)
+    button.onclick = () => todoForDoing(li, texto)
 }
 
 const adicionarTodo = () =>{
@@ -27,4 +30,19 @@ const adicionarTodo = () =>{
         alert('Não pode ser vazio')
     }
 }
+
+const todoForDoing = (lista,texto) =>{
+    const li = document.createElement('li')
+    const button = document.createElement('button')
+    const i = document.createElement('i')
+
+    i.setAttribute('class','fas fa-chevron-circle-right');
+    
+    button.appendChild(i);
+    li.append(texto,button);
+    cartaoDoing.appendChild(li)
+    cartaoTodo.removeChild(lista)
+    //button.onclick = () => doingForDone(li, texto)
+}
+
 btAdd.onclick = adicionarTodo
