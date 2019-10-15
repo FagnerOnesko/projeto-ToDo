@@ -42,7 +42,21 @@ const todoForDoing = (lista,texto) =>{
     li.append(texto,button);
     cartaoDoing.appendChild(li)
     cartaoTodo.removeChild(lista)
-    //button.onclick = () => doingForDone(li, texto)
+    button.onclick = () => doingForDone(li, texto)
+}
+
+const doingForDone = (lista,texto) =>{
+    const li = document.createElement('li')
+    const button = document.createElement('button')
+    const i = document.createElement('i')
+
+    i.setAttribute('class','fas fa-times-circle');
+    
+    button.appendChild(i);
+    li.append(texto,button);
+    cartaoDone.appendChild(li)
+    cartaoDoing.removeChild(lista)
+    //button.onclick = () => excluirDone(li, texto)
 }
 
 btAdd.onclick = adicionarTodo
