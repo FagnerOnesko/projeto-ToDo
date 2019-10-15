@@ -56,7 +56,11 @@ const doingForDone = (lista,texto) =>{
     li.append(texto,button);
     cartaoDone.appendChild(li)
     cartaoDoing.removeChild(lista)
-    //button.onclick = () => excluirDone(li, texto)
+    button.onclick = () => excluirDone(li)
+}
+
+const excluirDone = (lista) =>{
+    cartaoDone.removeChild(lista)
 }
 
 btAdd.onclick = adicionarTodo
